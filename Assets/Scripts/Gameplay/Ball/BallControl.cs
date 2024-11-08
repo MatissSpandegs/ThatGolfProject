@@ -1,18 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Gameplay.Manager;
 using UnityEngine;
+using VContainer;
 
 public class BallControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Inject] private GameplayManager gameplayManager { get; set; }
+    
+    public Rigidbody Rb;
+
+    private void Awake()
     {
-        
+        gameplayManager.ShootBall += Shoot;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Shoot(Vector3 velocity)
     {
-        
+        Rb.AddForce(velocity);
     }
 }

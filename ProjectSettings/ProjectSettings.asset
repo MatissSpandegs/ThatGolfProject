@@ -834,7 +834,10 @@ PlayerSettings:
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: VCONTAINER_UNITASK_INTEGRATION
+    Standalone: VCONTAINER_UNITASK_INTEGRATION 
+    iPhone: VCONTAINER_UNITASK_INTEGRATION 
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
