@@ -1,5 +1,7 @@
 using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
+using Gameplay.Manager;
 using UnityEngine;
 using VContainer;
 
@@ -8,6 +10,7 @@ namespace Gameplay.Interactables
     public class HoleControl : MonoBehaviour
     {
         [Inject] private HoleGroupControl holeGroup { get; set; }
+        [Inject] private GameplayManager gameplayManager { get; set; }
         
         [SerializeField] private ColliderListener colliderListener;
         [SerializeField] private MeshRenderer meshRenderer;
@@ -21,6 +24,10 @@ namespace Gameplay.Interactables
         public void SetState(HoleState state)
         {
             var previousState = currentState;
+            if (previousState == state)
+            {
+                return;
+            }
             currentState = state;
             var materialColor = meshRenderer.material.color;
             var newColor = Color.white;
@@ -42,10 +49,10 @@ namespace Gameplay.Interactables
                 meshRenderer.material.color = newColor;
                 return;
             }
-            SwitchHoleColor(materialColor,newColor).Forget();
+            SwitchHoleColor(materialColor,newColor, gameplayManager.MainCancellationSource.Token).Forget();
         }
 
-        private async UniTask SwitchHoleColor(Color oldColor, Color newColor)
+        private async UniTask SwitchHoleColor(Color oldColor, Color newColor, CancellationToken token)
         {
             var time = 0f;
             var maxTime = 0.2f;
@@ -55,7 +62,7 @@ namespace Gameplay.Interactables
                 var color = Color.Lerp(oldColor, newColor, percentTime);
                 meshRenderer.material.color = color;
                 time += Time.deltaTime;
-                await UniTask.NextFrame();
+                await UniTask.NextFrame(token);
             }
         }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Gameplay.Manager;
 using UnityEngine;
@@ -42,12 +43,13 @@ namespace Gameplay.Ball
 
         private void OnBallShot(Vector3 forceVector)
         {
-            DecreaseTrajectory().Forget();
+            var token = gameplayManager.MainCancellationSource.Token;
+            DecreaseTrajectory(token).Forget();
         }
 
-        private async UniTask DecreaseTrajectory()
+        private async UniTask DecreaseTrajectory(CancellationToken token)
         {
-            while (true)
+            while (!token.IsCancellationRequested)
             {
                 var applied = false;
                 for (var i = 0; i < trajectoryPoints.Count-1; i++)
@@ -74,7 +76,7 @@ namespace Gameplay.Ball
                     trajectory.gameObject.SetActive(false);
                     break;
                 }
-                await UniTask.WaitForFixedUpdate();
+                await UniTask.WaitForFixedUpdate(token);
             }
         }
 

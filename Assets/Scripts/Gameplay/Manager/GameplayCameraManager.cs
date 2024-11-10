@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -24,20 +25,19 @@ namespace Gameplay.Manager
             gameplayManager.ResetBall += ResetBall;
             gameplayManager.ShootBall += ShotBall;
             gameplayManager.BallSetUp += BallSetUp;
-            PlayIntroSequence().Forget();
         }
 
-        private async UniTask PlayIntroSequence()
+        private async UniTask PlayIntroSequence(CancellationToken token)
         {
-            // gameplayManager.SetState(GameplayState.PreLevel);
-            // soundManager.PlaySound(GameplaySoundManager.Sounds.Cheer);
-            // await ShowPrelevel();
+            gameplayManager.SetState(GameplayState.PreLevel);
+            soundManager.PlaySound(GameplaySoundManager.Sounds.Cheer);
+            await ShowPrelevel(token);
             gameplayManager.SetState(GameplayState.Active);
             SetActiveCamera(ballCamera.Cam.gameObject);
         }
 
 
-        public async UniTask ShowPrelevel()
+        public async UniTask ShowPrelevel(CancellationToken token)
         {
             var cameraOneTime = 0f;
             var cameraOneMaxTime = prelevelCameraOne.TrackDuration;
@@ -48,7 +48,7 @@ namespace Gameplay.Manager
             {
                 cameraOneDolly.m_PathPosition = cameraOneTime / cameraOneMaxTime;
                 cameraOneTime += Time.deltaTime;
-                await UniTask.NextFrame();
+                await UniTask.NextFrame(token);
             }
 
             var cameraTwoTime = 0f;
@@ -60,7 +60,7 @@ namespace Gameplay.Manager
             {
                 cameraTwoDolly.m_PathPosition = cameraTwoTime / cameraTwoMaxTime;
                 cameraTwoTime += Time.deltaTime;
-                await UniTask.NextFrame();
+                await UniTask.NextFrame(token);
             }
         }
 
@@ -79,6 +79,9 @@ namespace Gameplay.Manager
             var virtualCamera = shotCamera.Cam;
             var rbTransform = ball.Rb.transform;
             virtualCamera.Follow = rbTransform;
+            
+            var token = gameplayManager.MainCancellationSource.Token;
+            PlayIntroSequence(token).Forget();
         }
 
         private void SetActiveCamera(GameObject newActiveCamera)

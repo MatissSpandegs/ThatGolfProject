@@ -39,7 +39,7 @@ public class BallControl : MonoBehaviour
         source?.Dispose();
         source = null;
 
-        source = new CancellationTokenSource();
+        source = CancellationTokenSource.CreateLinkedTokenSource(gameplayManager.MainCancellationSource.Token);
         CheckIfBallStopped(source.Token).Forget();
     }
 
