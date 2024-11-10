@@ -22,7 +22,7 @@ namespace Gameplay.Manager
         public Action<int> TimeChanged { get; set; }
 
         public float ForceMultiplier = 2;
-        public float LevelStartTime = 60f;
+        public float LevelStartTime = 30f;
 
         private TimeSpan levelTime;
 

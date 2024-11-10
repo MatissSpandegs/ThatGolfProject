@@ -39,6 +39,7 @@ namespace Gameplay.Ball
         private void OnBallReset()
         {
             trajectory.gameObject.SetActive(false);
+            trajectory.positionCount = 0;
         }
 
         private void OnBallShot(Vector3 forceVector)
