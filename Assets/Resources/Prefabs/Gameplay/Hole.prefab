@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3405232739236405587}
-  serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.122, z: 0}
+  m_LocalPosition: {x: 0, y: -0.018, z: 0}
   m_LocalScale: {x: 70.85583, y: 70.85583, z: 70.85583}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1417685898138586010}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!64 &3434562948161029522
 MeshCollider:
@@ -41,17 +41,9 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3405232739236405587}
   m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
+  serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2534964839176971238, guid: 9ad4661e493c25b48b0a390d1c4edd6f, type: 3}
@@ -91,7 +83,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4821857989496601812}
-  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.12, y: 0.9, z: 10.01}
   m_LocalScale: {x: 3.3511, y: 3.3511, z: 3.3511}
@@ -100,6 +91,7 @@ Transform:
   - {fileID: 7718400264311938939}
   - {fileID: 7025008310285966582}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4480765055318626142
 MonoBehaviour:
@@ -120,7 +112,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
     m_TransformParent: {fileID: 1417685898138586010}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c16c586388ca1fb448ad177b9ef54c4c, type: 3}
@@ -167,10 +158,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hole
       objectReference: {fileID: 0}
+    - target: {fileID: 3451118302482216456, guid: c16c586388ca1fb448ad177b9ef54c4c, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c16c586388ca1fb448ad177b9ef54c4c, type: 3}
 --- !u!4 &7718400264311938939 stripped
 Transform:

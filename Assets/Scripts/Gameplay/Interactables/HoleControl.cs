@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
 
@@ -19,18 +20,42 @@ namespace Gameplay.Interactables
 
         public void SetState(HoleState state)
         {
+            var previousState = currentState;
             currentState = state;
+            var materialColor = meshRenderer.material.color;
+            var newColor = Color.white;
             switch (state)
             {
                 case HoleState.Positive:
-                    meshRenderer.material.color = Color.green;
+                    newColor = Color.blue;
                     break;
                 case HoleState.Negative:
-                    meshRenderer.material.color = Color.red;
+                    newColor = Color.red;
                     break;
                 case HoleState.Bonus:
-                    meshRenderer.material.color = Color.yellow;
+                    newColor = Color.yellow;
                     break;
+            }
+
+            if (previousState == HoleState.None)
+            {
+                meshRenderer.material.color = newColor;
+                return;
+            }
+            SwitchHoleColor(materialColor,newColor).Forget();
+        }
+
+        private async UniTask SwitchHoleColor(Color oldColor, Color newColor)
+        {
+            var time = 0f;
+            var maxTime = 0.2f;
+            while (time < maxTime)
+            {
+                var percentTime = time / maxTime;
+                var color = Color.Lerp(oldColor, newColor, percentTime);
+                meshRenderer.material.color = color;
+                time += Time.deltaTime;
+                await UniTask.NextFrame();
             }
         }
 
@@ -41,6 +66,7 @@ namespace Gameplay.Interactables
 
         public enum HoleState
         {
+            None,
             Positive,
             Negative,
             Bonus

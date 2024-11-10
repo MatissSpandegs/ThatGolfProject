@@ -14,7 +14,7 @@ namespace Gameplay.UI
 
         private void Update()
         {
-            timer.SetText($"Time: {gameplayManager.LevelTime}");
+            timer.SetText($"Time: {gameplayManager.LevelTime:mm\\:ss}");
         }
     }
 }
