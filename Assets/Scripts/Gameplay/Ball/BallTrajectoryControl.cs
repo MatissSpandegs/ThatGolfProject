@@ -28,6 +28,11 @@ namespace Gameplay.Ball
 
         private void OnTrajectoryChanged(Vector3 velocity)
         {
+            if (velocity.y < 0)
+            {
+                trajectory.positionCount = 0;
+                return;
+            }
             UpdateTrajectory(velocity, ballControl.Rb, ballControl.Rb.position);
         }
 

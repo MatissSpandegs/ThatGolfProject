@@ -83,10 +83,6 @@ namespace Gameplay.UI
             inputHolder.anchoredPosition = inputPosition;
             lineRenderer.SetPosition(1, inputPosition);
             dragDelta += eventData.delta;
-            if (dragDelta.y > 0)
-            {
-                return;
-            }
             gamePlayManager.BallShotChanged(dragDelta);
         }
 
