@@ -38,7 +38,7 @@ namespace Gameplay.Manager
         }
 
 
-        public async UniTask ShowPrelevel(CancellationToken token)
+        private async UniTask ShowPrelevel(CancellationToken token)
         {
             var cameraOneTime = 0f;
             var cameraOneMaxTime = prelevelCameraOne.TrackDuration;

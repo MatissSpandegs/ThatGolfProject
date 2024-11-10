@@ -17,10 +17,10 @@ namespace Gameplay.UI
 
         private void Awake()
         {
-            gameplayManager.TimeChanged += OnTimeChanged;
+            gameplayManager.TimeChanged += OnTimeGained;
         }
 
-        private void OnTimeChanged(int seconds)
+        private void OnTimeGained(int seconds)
         {
             var token = gameplayManager.MainCancellationSource.Token;
             ShowAddedTime(seconds, token).Forget();
