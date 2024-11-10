@@ -83,9 +83,9 @@ namespace Gameplay.Manager
         {
             Cheer,
             Shoot,
-            Timer,
             ShotIn,
             ShotMissed,
+            Ambience
         }
 
         [Serializable]

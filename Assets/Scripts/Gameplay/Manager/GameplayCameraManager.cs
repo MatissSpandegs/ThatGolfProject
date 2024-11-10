@@ -34,6 +34,7 @@ namespace Gameplay.Manager
             await ShowPrelevel(token);
             gameplayManager.SetState(GameplayState.Active);
             SetActiveCamera(ballCamera.Cam.gameObject);
+            soundManager.PlaySound(GameplaySoundManager.Sounds.Ambience);
         }
 
 

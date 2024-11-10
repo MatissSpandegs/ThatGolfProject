@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Offset: {x: -0.01, y: 2.05, z: -7.57}
-  m_ApplyAfter: 1
+  m_ApplyAfter: 0
   m_PreserveComposition: 0
 --- !u!1001 &664523889
 PrefabInstance:
@@ -2541,8 +2541,8 @@ MonoBehaviour:
   m_PathPosition: 0
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 0, z: 0}
-  m_XDamping: 0
-  m_YDamping: 0
+  m_XDamping: 1
+  m_YDamping: 1
   m_ZDamping: 1
   m_CameraUp: 0
   m_PitchDamping: 0
@@ -2856,37 +2856,45 @@ MonoBehaviour:
     Looping: 0
   - Type: 1
     Sound: {fileID: 8300000, guid: 0ae4387a078bdc34798f9dd65ab81905, type: 3}
-    Volume: 0.5
+    Volume: 0.2
     Looping: 0
+  - Type: 4
+    Sound: {fileID: 8300000, guid: 3508377b00c63624ea37adb9c35288b5, type: 3}
+    Volume: 0.2
+    Looping: 1
   winSounds:
-  - Type: 3
+  - Type: 2
     Sound: {fileID: 8300000, guid: 2b84f866e5a61df42a8a5e8de53133af, type: 3}
-    Volume: 0.5
+    Volume: 0.3
     Looping: 0
-  - Type: 3
+  - Type: 2
     Sound: {fileID: 8300000, guid: 3b3ebee660172914e95d16551773880d, type: 3}
-    Volume: 0.5
+    Volume: 0.3
     Looping: 0
-  - Type: 3
+  - Type: 2
     Sound: {fileID: 8300000, guid: 88cfc22a20a49774688cbded24a1af09, type: 3}
-    Volume: 0.5
+    Volume: 0.3
+    Looping: 0
+  - Type: 2
+    Sound: {fileID: 8300000, guid: 44603ec8a66310748a913e83c413ea42, type: 3}
+    Volume: 0.3
     Looping: 0
   loseSounds:
-  - Type: 4
+  - Type: 3
     Sound: {fileID: 8300000, guid: 253d5dfbf58afde4cbc8ace3af202504, type: 3}
-    Volume: 0.5
+    Volume: 0.3
     Looping: 0
-  - Type: 4
+  - Type: 3
     Sound: {fileID: 8300000, guid: 6c1058447d9ea984f90600911c01435a, type: 3}
     Volume: 0.2
     Looping: 0
-  - Type: 4
+  - Type: 3
     Sound: {fileID: 8300000, guid: 01850d6aae1035f48b52a2178a454fcf, type: 3}
     Volume: 0.2
     Looping: 0
-  - Type: 4
+  - Type: 3
     Sound: {fileID: 8300000, guid: 9f666e6af84320c4d9f2d06d0ec71567, type: 3}
-    Volume: 0.5
+    Volume: 0.3
     Looping: 0
 --- !u!4 &1560804703
 Transform:
@@ -4079,9 +4087,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 2
   m_FollowOffset: {x: 0, y: 0, z: 0}
-  m_XDamping: 0.2
-  m_YDamping: 0.2
-  m_ZDamping: 0.2
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
